@@ -1,0 +1,30 @@
+# Change the names within users include. Read the lines one by one.
+
+
+[Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : Controller
+    {
+        private readonly IUsers UserManager;
+        public UsersController(IUsers UserManager)
+        {
+            this.UserManager = UserManager;
+        }
+
+        // GET: api/GetUsers
+        [HttpGet]
+        [Route("GetUsers/")]
+        public async Task<ActionResult<List<UsersDTO>>> GetUsers()
+        {
+            return Ok(await UserManager.GetUsers());
+        }
+
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [Route("PostUsers/")]
+        public async Task<ActionResult<UsersDTO>> PostUsers([FromBody] UsersDTO users)
+        {
+            return Ok(await UserManager.PostUsers(users));
+        }
+    }

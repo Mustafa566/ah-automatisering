@@ -1,0 +1,32 @@
+# SQL PERFORMANCE:
+
+ - Use EXISTS instead of IN to check existence of data.
+ - Avoid * in SELECT statement. Give the name of columns which you require.
+ - Use joins instead of sub-queries.
+ - Use WHERE expressions to limit the size of result tables that are created with joins.
+ 
+
+# SQL DATA STORAGE:
+ 
+ - Size matters
+	Always use the smallest data size that will accommodate the largest possible value. 
+	If a column is going to store values between 1 and 5, use tinyint instead of int.
+
+- Faster sorts
+	To speed up frequent sorts, use an int (or an integer-based) data type if possible. 
+	SQL Server sorts integer data faster than character data.
+	
+- Efficient strings
+	The text data type accommodates a lot of data but at a cost. 
+	Unfortunately, I have seen developers use it by default. 
+	For those large columns, use varchar instead; it accommodates up to 8,000 
+	characters and requires less overhead. Consequently, varchar performs better.
+	
+# FIVE SCARIEST SQL SERVER DATA TYPES
+
+- Datetime
+- Varchar(max)
+- Nvarchar(max)
+- Text or ntext
+- Float (or Real)
+

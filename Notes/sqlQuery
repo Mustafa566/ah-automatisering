@@ -1,0 +1,36 @@
+# INSERT DUMMY DATA
+
+select * from items
+
+INSERT INTO items
+(gd, title, header, storage, [description], clicks, created_by, modified_by, created_dt, modified_dt)
+
+VALUES (newid(),'titel 1','header 1',null,'desc1',1,newid(),newid(),GETDATE(),getdate())
+
+
+# INSERT USER DATA
+
+INSERT INTO users
+(gd, username, passw, first_name, middle_name, last_name, email, recover_email, created_by, modified_by, created_dt, modified_dt)
+
+VALUES (newid(), 'user', 'password', 'mustafa', '', 'bolat','mustafa@gmail.com', 'mustafa@gmail.com', newid(), newid(), GETDATE(), getdate())
+
+select * from users
+
+
+# UPDATE SQL (PUT)
+
+update items set
+title = 'test2',
+header = 'header 2'
+where gd = '2309257B-AB83-48AB-BB97-E8AB97816371'
+
+
+# GET ALL TABLES WITH DATA
+
+select * from [item tags]
+select * from items
+select * from reaction
+select * from rights
+select * from userRights
+select * from users

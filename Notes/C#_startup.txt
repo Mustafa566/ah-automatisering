@@ -1,0 +1,4 @@
+# Add this code in the Startup.cs and change the interface name and the manager name.
+
+
+services.AddScoped<IUsers, UserManager>();

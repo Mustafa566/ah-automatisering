@@ -1,0 +1,18 @@
+- Beginscherm pagina
+- Hoofd pagina
+- Net binnen pagina
+- Populair pagina
+- Video pagina
+- Meer pagina
+- Inloggen pagina
+- Registreren pagina
+- Wachtwoord vergeten pagina
+- Instellingen pagina
+- Item info pagina
+- Admin dashboard pagina
+- Gebruikers pagina
+- Gebruiker status toevoeg pagina
+- Gebruiker status wijzig pagina
+- Item pagina (Toont meeste aantal kliks)
+- Maak item pagina
+- Wijzig item pagina

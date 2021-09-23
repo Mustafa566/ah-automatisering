@@ -1,0 +1,18 @@
+Foreign key:
+
+
+Een Foreign key die wordt gebruikt om twee tabellen aan elkaar te koppelen.
+Een Foreign key is een veld waar je de ene tabel dat verwijst naar de PRIMAIRE SLEUTEL in een andere tabel.
+
+
+Nadelen:
+ - Voor elke CRUD bewerking laat je de database meer werk doen, waardoor je prestaties minder wordt.
+ - Als je een user verwijderd dan verwijder je alle data die aan de user gekoppeld is.
+
+ 
+Voordelen:
+ - Wanneer je active foreign key in je tabel heb, dan heb je betere data kwaliteit.
+
+
+CASCADE:
+ - Als je van de parent verwijderd of update dan worden de childeren ook automatisch verwijderd en geupdated.

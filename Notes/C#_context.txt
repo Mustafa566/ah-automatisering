@@ -1,0 +1,10 @@
+# Change the name of the UsersContext file.
+
+
+public class UsersContext : DbContext
+    {
+        public UsersContext(DbContextOptions<UsersContext> options) : base(options)
+        {
+        }
+        public DbSet<UsersDTO> Users { get; set; }
+    }

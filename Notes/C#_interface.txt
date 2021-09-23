@@ -1,0 +1,5 @@
+public interface IUsers
+    {
+        Task<List<UsersDTO>> GetUsers();
+        Task<ActionResult<UsersDTO>> PostUsers(UsersDTO users);
+    }

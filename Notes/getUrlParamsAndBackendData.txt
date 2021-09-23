@@ -1,0 +1,22 @@
+# IMPORT THE FILES
+
+import ItemService from 'src/app/item.service';
+import { ReactionDTO } from 'src/app/models/dto/reaction.dto';
+import { ActivatedRoute } from "@angular/router";
+
+# ADD VARIABELS AND ADD ROUTES AND THE SERVICE IN THE CONSTRUCTOR.
+reaction: ReactionDTO[] = [];
+param: string | null | undefined;
+constructor(private router: Router, private route: ActivatedRoute, private itemsService: ItemService) { }
+
+# THE FIRST FUNCTION GETS ALL THE DATA FROM THE BACKEND
+  AND THE SECOND FUNCTION GETS THE PARAMS OF THE URL.
+ngOnInit(): void {
+    this.itemsService.getComments().subscribe(data => {
+      this.reaction = data;
+    });
+
+    this.route.paramMap.subscribe(params => {
+      this.param = this.route.snapshot.params.id;
+    })
+}

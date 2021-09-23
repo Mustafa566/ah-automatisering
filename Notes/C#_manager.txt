@@ -1,0 +1,62 @@
+# Use this code for the managers. You can get and insert data.
+# Import the packets with ctrl + .  
+# Change the code read each code one by one.
+
+
+public class UserManager : IUsers
+    {
+        public string connectionString = "Server=MUSTAFA;Database=nieuwsApp;Trusted_Connection=True";
+        public object Mapper { get; private set; }
+        public async Task<List<UsersDTO>> GetUsers()
+        {
+            List<UsersDTO> data = new List<UsersDTO>();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                data = (await conn.QueryAsync<UsersDTO>("SELECT gd, first_name, middle_name, last_name, email, recover_email, created_by, modified_by, created_dt FROM users")).ToList();
+            }
+            catch (Exception er)
+            {
+                Console.WriteLine(er.Message);
+            }
+            return data;
+        }
+
+        public async Task<ActionResult<UsersDTO>> PostUsers(UsersDTO users)
+        {
+            //Get the SQL Server database connection string from
+            //Create a new SQL Server database connection
+            SqlConnection conn;
+            conn = new SqlConnection(connectionString);
+            try
+            {
+                //Open a connection
+                conn.Open();
+                //Create a parameterized SQL command to insert
+                string query =
+                    "INSERT INTO users (gd, first_name, middle_name, last_name, email, recover_email, created_by, modified_by, created_dt, modified_dt) " +
+                    "VALUES(@gd, @first_name, @middle_name, @last_name, @email, @recover_email, @created_by, @modified_by, @created_dt, @modified_dt)";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@gd", Guid.NewGuid());
+                cmd.Parameters.AddWithValue("@first_name", users.first_name);
+                cmd.Parameters.AddWithValue("@middle_name", users.middle_name);
+                cmd.Parameters.AddWithValue("@last_name", users.last_name);
+                cmd.Parameters.AddWithValue("@email", users.email);
+                cmd.Parameters.AddWithValue("@recover_email", users.recover_email);
+                cmd.Parameters.AddWithValue("@created_by", users.created_by);
+                cmd.Parameters.AddWithValue("@modified_by", users.modified_by);
+                cmd.Parameters.AddWithValue("@created_dt", DateTime.Now);
+                cmd.Parameters.AddWithValue("@modified_dt", DateTime.Now);
+
+                //Run the insert statement
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            return users;
+        }
+    }

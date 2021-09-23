@@ -1,0 +1,24 @@
+# GET BACKEND DATA IN SERVICE (EXAMPLE)
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';  
+import { Observable, of, throwError } from 'rxjs';
+import { ItemDTO } from './models/dto/item.dto';
+import { ReactionDTO } from './models/dto/reaction.dto';
+
+@Injectable({  
+  providedIn: 'root'
+})
+export default class ItemService {
+  public API = 'https://localhost:44355/';
+  constructor(private http: HttpClient) {}
+
+  getAllUsers(): Observable<ItemDTO[]> {
+    return this.http.get<ItemDTO[]>(this.API + 'api/Items/GetItem');
+  }
+
+  getComments(): Observable<ReactionDTO[]> {
+    return this.http.get<ReactionDTO[]>(this.API + 'api/Reaction/GetReaction');
+  }
+}

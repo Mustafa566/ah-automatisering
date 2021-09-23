@@ -1,0 +1,11 @@
+select users.gd, users.first_name, users.last_name
+from users
+where users.gd = 'F09856EC-7107-45E1-B7A1-9219ACC07B8D'
+
+
+select 
+                reaction.comment_description,
+                users.first_name
+
+                from reaction
+                inner join users on users.gd = reaction.created_by
